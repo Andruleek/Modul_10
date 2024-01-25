@@ -36,6 +36,8 @@ class Record:
                 break
 
     def edit_phone(self, old_phone, new_phone):
+        if not re.match(r'^\d{10}$', new_phone):
+            raise ValueError("Invalid new phone number")
         for p in self.phones:
             if p.value == old_phone:
                 p.value = new_phone
